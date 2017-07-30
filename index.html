@@ -1,21 +1,56 @@
 <html>
-<form id="cadastroForm" method="POST" action="https://inkoncert.herokuapp.com/artista">
-    <input type="email" name="EMAIL" required="required" placeholder="Email" value="" />
-    <input type="text" name="NOME" required="required" placeholder="NOME" value="" />
+<form id="feedbackForm" method="POST" action="https://inkoncert.herokuapp.com/feedback">
 
-    <select name="instrumentos" multiple required="required">
-        <option value="1">Violão</option>
-        <option value="2">Gaita</option>
-        <option value="3">Guitarra</option>
+    <label>Tem a música como profissão principal?</label>
+    <select name="P1" required="required">
+        <option value="0">Não</option>
+        <option value="1">Sim</option>
     </select>
 
-    <select name="estilos" multiple required="required">
-        <option value="1">Forró</option>
-        <option value="2">Rock</option>
-        <option value="3">Pagode</option>
-        <option value="4">Sertanejo</option>
+    <br>
+    <label>Em qual função/instrumento você atua com mais frequencia?</label>
+    <select name="P2" required="required">
+        <option value="0">OUTRO</option>
+        <option value="1">VOCAL</option>
+        <option value="2">SOLO</option>
+        <option value="3">BACKVOCAL</option>
+        <option value="4">GUITARRA</option>
+        <option value="5">VIOLAO</option>
+        <option value="6">BAIXO</option>
+        <option value="7">TECLADO</option>
+        <option value="8">PIANO</option>
+        <option value="9">VIOLINO</option>
+        <option value="10">BATERIA</option>
     </select>
 
+    <br>
+    <label>Grau de conhecimento nesta função/instrumento?</label>
+    <input type="range" name="P3" min="0" max="10" required="required" list="tickmarks">
+    <datalist id="tickmarks">
+        <option value="1"></option>
+        <option value="2"></option>
+        <option value="3"></option>
+        <option value="4"></option>
+        <option value="5" label="5"></option>
+        <option value="6"></option>
+        <option value="7"></option>
+        <option value="8"></option>
+        <option value="9"></option>
+        <option value="10" label="10"></option>
+    </datalist>
+   
+    <br>
+    <label>Como você avalia este serviço?</label>
+    <input type="range" name="P4" min="0" max="10" required="required" list="tickmarks">
+    
+       
+    <br>
+    <label>Você indicaria esta solução a um amigo?</label>
+    <input type="range" name="P5" min="0" max="10" required="required" list="tickmarks">
+
+    <br>
+    <br>
+    
     <button type="submit">Enviar</button>
 </form>
 
@@ -24,17 +59,17 @@
     crossorigin="anonymous"></script>
 
 <script>
-    var $cadastroForm = $('#cadastroForm');
+    var $feedbackForm = $('#feedbackForm');
 
-    $cadastroForm.on('submit', function (ev) {
+    $feedbackForm.on('submit', function (ev) {
         ev.preventDefault();
 
         $.ajax({
-            url: "https://inkoncert.herokuapp.com/artista",
+            url: "https://inkoncert.herokuapp.com/feedback",
             type: 'POST',
-            data: $cadastroForm.serialize(),
+            data: $feedbackForm.serialize(),
             success: function (msg) {
-                alert("Cadastrado com sucesso!");
+                alert("Obrigado pelo seu feedback!");
             },
             error: function (err) {
                 if (err && err.responseJSON && err.responseJSON.message && err.responseJSON.message.userMessage)

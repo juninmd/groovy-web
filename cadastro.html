@@ -1,0 +1,49 @@
+<html>
+<form id="cadastroForm" method="POST" action="https://inkoncert.herokuapp.com/artista">
+    <input type="email" name="EMAIL" required="required" placeholder="Email" value="" />
+    <input type="text" name="NOME" required="required" placeholder="NOME" value="" />
+
+    <select name="instrumentos" multiple required="required">
+        <option value="1">Violão</option>
+        <option value="2">Gaita</option>
+        <option value="3">Guitarra</option>
+    </select>
+
+    <select name="estilos" multiple required="required">
+        <option value="1">Forró</option>
+        <option value="2">Rock</option>
+        <option value="3">Pagode</option>
+        <option value="4">Sertanejo</option>
+    </select>
+
+    <button type="submit">Enviar</button>
+</form>
+
+</html>
+<script src="http://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous"></script>
+
+<script>
+    var $cadastroForm = $('#cadastroForm');
+
+    $cadastroForm.on('submit', function (ev) {
+        ev.preventDefault();
+
+        $.ajax({
+            url: "https://inkoncert.herokuapp.com/artista",
+            type: 'POST',
+            data: $cadastroForm.serialize(),
+            success: function (msg) {
+                alert("Cadastrado com sucesso!");
+            },
+            error: function (err) {
+                if (err && err.responseJSON && err.responseJSON.message && err.responseJSON.message.userMessage)
+                    alert(err.responseJSON.message.userMessage);
+                else {
+                    alert("Ocorreu uma falha com o cadastro.")
+                }
+            }
+        });
+    });
+
+</script>
