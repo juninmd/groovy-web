@@ -1,0 +1,14 @@
+{
+  "devDependencies": {
+    "lite-server": "^2.3.0"
+  },
+  "scripts": {
+    "dev": "lite-server"
+  },
+  "name": "groovy-web",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/juninmd/groovy-web.git",
+  "author": "juninmd <jr_acn@yahoo.com.br>",
+  "license": "MIT"
+}
