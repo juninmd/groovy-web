@@ -137,8 +137,8 @@
       ev.preventDefault();
 
       $.ajax({
-        //url: "https://inkoncert.herokuapp.com/feedback",
-        url: "http://localhost:4700/feedback",
+        url: "https://inkoncert.herokuapp.com/feedback",
+        //url: "http://localhost:4700/feedback",
         type: 'POST',
         data: $feedbackForm.serialize(),
         success: function (msg) {

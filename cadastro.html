@@ -108,8 +108,8 @@
       ev.preventDefault();
 
       $.ajax({
-        //url: "https://inkoncert.herokuapp.com/artista",
-        url: "http://localhost:4700/artista",
+        url: "https://inkoncert.herokuapp.com/artista",
+        //url: "http://localhost:4700/artista",
         type: 'POST',
         data: $cadastroForm.serialize(),
         success: function (msg) {
